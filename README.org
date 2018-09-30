@@ -1,0 +1,226 @@
+* README FILE
+** TODO List
+*** TODO ADD [[https://github.com/politza/pdf-tools][pdf-tools]]
+** Student Pack
+
+This Emacs dot-files are a humble attempt at providing certain tools and modifications that will optimise the behaviour of Emacs for the modules taught at Cardiff University School of Computer Science and Informatics.q
+
+This file aims at appeasing academic staff and students alike so it ships with support for writing academic papers, taking notes (Thanks to ~org-mode~) and a ~presentation-mode~.
+
+Bellow you will find how to compile Emacs, how to install my [[https://github.com/ajcastany/.emacs.d][dot-files]] and how to configure [[https://github.com/pyenv/pyenv][pyenv]], so you can have different working environments for different versions of Python and each with it's own set of library versions.
+
+This dot-files are heavily inspired by Howard Abrams and purcell Emacs configuration files.
+
+Note: For viewing M$ Office or OpenOffice files you require ~unoconv~ tools:
+
+#+BEGIN_SRC bash
+
+sudo apt-get install unoconv
+
+#+END_SRC
+
+** Compiling Emacs
+
+*** Download Emacs
+
+    Go to [[https://www.gnu.org/software/emacs/download.html][Emacs Download Page]] and download the latest version as tarball, then:
+
+#+BEGIN_SRC bash
+tar xf ~/Downloads/emacs-26.1.tar.xz
+cd ~/Downloads/emacs-26.1
+./configure --with-mailutils --with-imagemagick --without-cairo  --with-xwidgets --with-x-toolkit=gtk3
+#+END_SRC
+
+    Imagemagick gives support to inline images, you might need to install certain libraries.  Bellow are the configurations I am currently using.
+
+#+BEGIN_SRC code
+Configured for 'x86_64-pc-linux-gnu'.
+
+  Where should the build process find the source code?    .
+  What compiler should emacs be built with?               gcc -g3 -O2
+  Should Emacs use the GNU version of malloc?             no (only before dumping)
+  Should Emacs use a relocating allocator for buffers?    no
+  Should Emacs use mmap(2) for buffer allocation?         no
+  What window system should Emacs use?                    x11
+  What toolkit should Emacs use?                          GTK3
+  Where do we find X Windows header files?                Standard dirs
+  Where do we find X Windows libraries?                   Standard dirs
+  Does Emacs use -lXaw3d?                                 no
+  Does Emacs use -lXpm?                                   yes
+  Does Emacs use -ljpeg?                                  yes
+  Does Emacs use -ltiff?                                  yes
+  Does Emacs use a gif library?                           yes -lgif
+  Does Emacs use a png library?                           yes -lpng16
+  Does Emacs use -lrsvg-2?                                yes
+  Does Emacs use cairo?                                   no
+  Does Emacs use -llcms2?                                 yes
+  Does Emacs use imagemagick (version 6)?                 yes
+  Does Emacs support sound?                               yes
+  Does Emacs use -lgpm?                                   yes
+  Does Emacs use -ldbus?                                  yes
+  Does Emacs use -lgconf?                                 no
+  Does Emacs use GSettings?                               yes
+  Does Emacs use a file notification library?             yes -lglibc (inotify)
+  Does Emacs use access control lists?                    yes -lacl
+  Does Emacs use -lselinux?                               yes
+  Does Emacs use -lgnutls?                                yes
+  Does Emacs use -lxml2?                                  yes
+  Does Emacs use -lfreetype?                              yes
+  Does Emacs use -lm17n-flt?                              yes
+  Does Emacs use -lotf?                                   yes
+  Does Emacs use -lxft?                                   yes
+  Does Emacs use -lsystemd?                               no
+  Does Emacs directly use zlib?                           yes
+  Does Emacs have dynamic modules support?                no
+  Does Emacs use toolkit scroll bars?                     yes
+  Does Emacs support Xwidgets (requires gtk3)?            yes
+  Does Emacs have threading support in lisp?              yes
+#+END_SRC
+
+*** Install Emacs
+
+Now that is has been configured, you can compile it:
+
+#+BEGIN_SRC bash
+
+make ~/Downloads/emacs-26.1/
+
+#+END_SRC
+
+There should be a executable file in ~emacs26.1/src~.  It is recommended you try Emacs at this point, and maybe re-configure and re-compile if necessary.
+
+#+BEGIN_SRC bash
+
+make install
+
+#+END_SRC
+
+**** On Linux Systems
+
+You will need to add the path to ~/usr/share/applications/emacs.desktop~:
+
+#+BEGIN_SRC code
+[Desktop Entry]
+Encoding=UTF-8
+Exec=/usr/local/bin/emacs
+Icon=/usr/share/icons/hicolor
+Type=Application
+Terminal=false
+Comment=Gnu Emacs
+Name=Emacs
+GenericName=emacs26
+StartupNotify=false
+Categories=Development;IDE;Lisp
+
+#+END_SRC
+
+Finally, add the icons to your system:
+
+#+BEGIN_SRC bash
+
+sudo cp -rf ~/Downloads/emacs-26.1/etc/images/icons/hicolor /usr/share/icons/hicolor
+
+#+END_SRC
+
+*** Cloning this repo
+    Clone this dot-files to use this configuration:
+
+#+BEGIN_SRC bash
+
+cd $HOME
+git clone https://github.com/ajcastany/.emacs.d .emacs.d
+
+#+END_SRC
+
+The first time you run Emacs, it will start downloading the packages defined in this configuration file.  After it finished, close it (~C-c C-x~) and restart it a couple of times to make sure all the packages are installed and running.
+
+*** Installing and configuring pyenv
+
+**** Installation
+You should now have a running copy of Emacs with some default themes.  Now let's install pyenv, pyenv-virtualenv and pyenv-virtuanenvwrapper.
+
+This is so you can keep the dependencies, libraries and versions of your python projects within their own project folders.
+
+First, let's install pyenv:
+
+#+BEGIN_SRC bash
+
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+git clone https://github.com/pyenv/pyenv-virtualenvwrapper.git $(pyenv root)/plugins/pyenv-virtualenvwrapper
+#+END_SRC
+
+Now add the $PATH and the pyenv init to your shell .profile (I am using bash)
+
+#+BEGIN_SRC
+
+export WORKON_HOME=$HOME/.pyenv/versions
+export PROJECT_HOME=$HOME/<YOUR PROJECT $HOME>
+export PYENV_ROOT="${HOME}/.pyenv"
+
+if [ -d "${PYENV_ROOT}" ]; then
+    export PATH="${PYENV_ROOT}/bin:${PATH}"
+    eval "$(pyenv init -)"
+fi
+
+#Keep the following line commented.
+pyenv virtualenvwrapper_lazy #Uncomment this line for initial configuration.
+
+#+END_SRC
+:FILE: .bash.rc
+
+Restart your shell for the changes to take effect.  Once the initial configuration has finished, open .profile and comment the last line.  Otherwise it will launch the configuration everytime you open the shell.
+
+**** Creating virtual environments
+
+First, Install the python versions you want:
+
+#+BEGIN_SRC bash
+
+pyenv install 2.7.14 #This what Cardiff University uses
+pyenv install 3.7.0  #This is last stable version of Python
+
+#+END_SRC
+
+Now let's create virtual environments for each of the previous versions before:
+
+***** Python 2.7 (Cardiff University Python)
+
+#+BEGIN_SRC bash
+
+pyenv global 2.7.14 #This sets 2.7 as the 'global python
+pyenv virtualenv Cardiff-University #This creates the virtual environment
+pyenv activate Cardiff-University   #This activates the environment,
+                                    #Overrides global settings
+pip install --upgrade jedi flake8 pep8 importmagic autopep8 yapf nose #so you can enjooy the python mode provided
+#+END_SRC
+
+Navigate to your Cardiff University project home folder and comint:
+
+#+BEGIN_SRC bash
+
+pyenv local Cardiff-University #This will make the env active in "."
+
+#+END_SRC
+
+***** Bleeding Edge Python (3.7.0)
+
+#+BEGIN_SRC bash
+
+pyenv global 3.7.0 #This sets 3.7 as the 'global python
+pyenv virtualenv <Your-environment-name> #This creates the virtual environment
+pyenv activate <Your-environment-name>
+
+pip install --upgrade jedi flake8 pep8 importmagic autopep8 yapf nose #so you can enjooy the python mode provided
+
+#+END_SRC
+
+Navigate to your python3 project home folder and do:
+
+#+BEGIN_SRC
+
+pyenv local <Your-environment-name>  #This will make the env active in "."
+
+#+END_SRC
+
+_EOF_
