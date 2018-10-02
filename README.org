@@ -2,6 +2,7 @@
 ** TODO List
 *** TODO ADD [[https://github.com/politza/pdf-tools][pdf-tools]]
 *** TODO ADD site-lisp folder
+*** TODO ADD ensime to require-package
 ** Student Pack
 
 This Emacs dot-files are a humble attempt at providing certain tools and modifications that will optimise the behaviour of Emacs for the modules taught at Cardiff University School of Computer Science and Informatics.q
