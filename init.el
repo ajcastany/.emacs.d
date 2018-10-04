@@ -104,7 +104,7 @@
 (require 'init-wlpowerline)
 ;;(require 'init-modeline) Very broken
 ;;(require 'init-eclim) broken!
-;;(require 'init-spoty.el) broken!
+;;(require 'init-spoty.el)
                                         ;(require 'init-newpowerline )
 ;; ;; Extra packages which don't require any configuration
 
