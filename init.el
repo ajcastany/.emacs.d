@@ -102,6 +102,8 @@
 (require 'init-haskell)
 ;;TESTING powelrine
 (require 'init-wlpowerline)
+;;testing CSS mode
+(require 'init-css)
 ;;(require 'init-modeline) Very broken
 ;;(require 'init-eclim) broken!
 ;;(require 'init-spoty.el)
