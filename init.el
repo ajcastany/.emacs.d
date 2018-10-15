@@ -114,6 +114,7 @@
 (require-package 'lua-mode)
 (require-package 'htmlize)
 (require-package 'dsvn)
+(require-package 'ob-async)
 (when *is-a-mac*
   (require-package 'osx-location))
 (unless (eq system-type 'windows-nt)
@@ -155,6 +156,7 @@
 (global-visual-line-mode 1)
 (blink-cursor-mode 0)
 (setq backup-directory-alist '(("" . "~/.emacs.d/emacs-backup"))) ;;driving me insane
+
 ;;provide init.el
 (provide 'init)
 
