@@ -82,7 +82,7 @@
 (require 'init-git)
 (require 'init-github)
 (require 'init-pyenv)             ;This is a ha-package
-
+(require 'init-csv)
 (require 'init-projectile)
 
 (require 'init-compile)
@@ -95,17 +95,23 @@
 (require 'init-spelling)
 (require 'init-misc)
 
+
 (require 'init-ob-scala)
 (require 'init-ledger)
 (require 'init-org)
 (require 'init-present)
 (require 'init-haskell)
 ;;TESTING powelrine
-(require 'init-wlpowerline)
+;; (require 'init-wlpowerline)
+;;; Web modes:
 ;;testing CSS mode
 (require 'init-css)
+;; (require 'init-html)                    ;Tag edit minor mode.
+(require 'init-markdown)
+(require 'init-nxml)
+(require 'init-js2-mod)
 ;;(require 'init-modeline) Very broken
-;;(require 'init-eclim) broken!
+(require 'init-eclim)                   ;fix!
 ;;(require 'init-spoty.el)
                                         ;(require 'init-newpowerline )
 ;; ;; Extra packages which don't require any configuration

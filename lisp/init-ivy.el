@@ -1,4 +1,7 @@
-;;; -*- lexical-binding: t -*-
+;;; Init-ivy.el --- Summary:
+;;; Commentary:
+;;; Code:
+
 (when (maybe-require-package 'ivy)
   (add-hook 'after-init-hook 'ivy-mode)
   (after-load 'ivy

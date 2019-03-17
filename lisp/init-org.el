@@ -417,6 +417,7 @@
                                  (ruby       . t)
                                  (dot        . t)
                                  (css        . t)
+                                 (sqlite     . t)
                                  (plantuml   . t))))
 
 ;; get out of editing org mode source code blocks
