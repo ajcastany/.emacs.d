@@ -111,7 +111,7 @@
 (require 'init-nxml)
 (require 'init-js2-mod)
 ;;(require 'init-modeline) Very broken
-(require 'init-eclim)                   ;fix!
+;; (require 'init-eclim)                   ;fix!
 ;;(require 'init-spoty.el)
                                         ;(require 'init-newpowerline )
 ;; ;; Extra packages which don't require any configuration

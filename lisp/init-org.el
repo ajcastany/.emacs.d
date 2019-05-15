@@ -342,9 +342,9 @@
       :END:
       ,#+HTML: <div class=\"date\">%<%e %b %Y></div>
 
-      %i
+;;       %i
 
-      [[%F][Read more...]" :empty-lines 1)))
+;;       [[%F][Read more...]" :empty-lines 1)))
 
 ;;;for syncing with google tasks (commented)
 
