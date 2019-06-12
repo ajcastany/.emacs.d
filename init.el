@@ -102,6 +102,7 @@
 (require 'init-haskell)
 ;;TESTING powelrine
 (require 'init-wlpowerline)
+(require 'init-js)
 ;;(require 'init-modeline) Very broken
 ;;(require 'init-eclim) broken!
 ;;(require 'init-spoty.el) broken!
