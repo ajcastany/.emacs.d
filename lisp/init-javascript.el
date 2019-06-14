@@ -32,8 +32,8 @@
   ;;; Pray this thing doesn't break it:
   ;;  for checking with ESlint
 
-  (add-hook 'js2-mode-hook
-            (lambda () (flycheck-select-checker "javascript-eslint")))
+  ;; (add-hook 'js2-mode-hook
+  ;;           (lambda () (flycheck-select-checker "javascript-eslint")))
 
   (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
 
