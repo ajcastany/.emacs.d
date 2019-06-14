@@ -1,4 +1,4 @@
-;;;JavaScript mode
+;;;JavaScript mode  Will stay here for testing...
 
 (require 'js2-mode)
 (unless (package-installed-p 'indium)

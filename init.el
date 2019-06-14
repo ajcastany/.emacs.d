@@ -88,6 +88,9 @@
 (require 'init-compile)
 ;;(require 'init-python)
 (require 'init-hapython)
+(require 'init-css)
+(require 'init-csv)
+(require 'init-markdown)
 
 
 (require 'init-paredit)
@@ -102,7 +105,8 @@
 (require 'init-haskell)
 ;;TESTING powelrine
 (require 'init-wlpowerline)
-(require 'init-js)
+;;(require 'init-js)   ;;gonna test the one bellow:
+(require 'init-javascript)
 ;;(require 'init-modeline) Very broken
 ;;(require 'init-eclim) broken!
 ;;(require 'init-spoty.el) broken!
