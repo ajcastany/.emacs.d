@@ -13,6 +13,17 @@
             (eval-after-load "company"
               '(add-to-list 'company-backends '(company-anaconda :with company-capf)))))
 
+(use-package jedi
+  :ensure t
+  :init
+  (add-to-list 'company-backends 'company-jedi)
+  :config
+  (use-package company-jedi
+    :ensure t
+    :init
+    (add-hook 'python-mode-hook (lambda () (add-to-list 'company-backends 'company-jedi)))
+    (setq company-jedi-python-bin "python")))
+
 ;;ELPY
 
 (use-package elpy
@@ -33,5 +44,7 @@
 
   :bind (:map elpy-mode-map ([remap elpy-goto-definition] .
                              ha/elpy-goto-definition)))
+
+(advice-add 'elpy-goto-definition :after-until 'find-tag)
 
 (provide 'init-hapython)
