@@ -107,6 +107,8 @@
 (require 'init-wlpowerline)
 ;;(require 'init-js)   ;;gonna test the one bellow:
 (require 'init-javascript)
+(require 'init-web)
+
 ;;(require 'init-modeline) Very broken
 ;;(require 'init-eclim) broken!
 ;;(require 'init-spoty.el) broken!
